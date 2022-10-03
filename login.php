@@ -20,7 +20,7 @@ if (isset($_POST['login'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    $result = mysqli_query($conn, "SELECT * FROM tb_admin WHERE username = '$username'");
+    $result = mysqli_query($conn, "SELECT * FROM tb_admin_2 WHERE username = '$username'");
     $get_admin = mysqli_fetch_assoc($result);
 
     if ($get_admin) {

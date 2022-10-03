@@ -9,7 +9,7 @@ if (!isset($_SESSION['login_super'])) {
     }
 }
 $get_id_session = $_SESSION['get_id'];
-$query_admin_akun = mysqli_query($conn, "SELECT * FROM tb_admin WHERE id = '$get_id_session'");
+$query_admin_akun = mysqli_query($conn, "SELECT * FROM tb_admin_2 WHERE id = '$get_id_session'");
 $get_data_akun_admin = mysqli_fetch_assoc($query_admin_akun);
 $role = $get_data_akun_admin['role'];
 $tap = $get_data_akun_admin['tap'];
@@ -17,13 +17,13 @@ $cluster = $get_data_akun_admin['cluster'];
 $login_session = "";
 if ($role == "Super") {
     $login_session = "login_super";
-    $data_admin = mysqli_query($conn, "SELECT * FROM tb_admin WHERE cluster ='$cluster'");
+    $data_admin = mysqli_query($conn, "SELECT * FROM tb_admin_2 WHERE cluster ='$cluster'");
 } else {
     $login_session = "login_admin";
 
     // $teritori = mysqli_query($conn, "SELECT * FROM tb_teritori_tap WHERE tap = '$tap'");
     // $dta_teritori = mysqli_fetch_assoc($teritori);
-    $data_admin = mysqli_query($conn, "SELECT * FROM tb_admin WHERE tap ='$tap'");
+    $data_admin = mysqli_query($conn, "SELECT * FROM tb_admin_2 WHERE tap ='$tap'");
 }
 
 
@@ -103,7 +103,7 @@ if ($role == "Super") {
                             <li class="dropdown top-menu-item-xs">
                                 <a href="" class="dropdown-toggle profile waves-effect waves-light" data-toggle="dropdown" aria-expanded="true"><img src="assets/images/users/avatar-1.jpg" alt="user-img" class="img-circle"> </a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="#"><i class="ti-user m-r-10 text-custom"></i> <?= $get_data_akun_admin['nama'] ?></a></li>
+                                    <li><a href="#"><i class="ti-user m-r-10 text-custom"></i> <?= $get_data_akun_admin['username'] ?></a></li>
                                     <li class="divider"></li>
                                     <li><a href="" data-toggle="modal" data-target=".bs-example-modal-sm"><i class="ti-power-off m-r-10 text-danger"></i> Logout</a></li>
                                 </ul>
@@ -157,9 +157,13 @@ if ($role == "Super") {
 
                         </li>
 
-                        <li class="has_sub">
-                            <a href="administrator.php" class="waves-effect"><i class="ti-user"></i> <span> Administrator </span></a>
-                        </li>
+                        <?php
+                        if ($role == "Super") {
+                            echo "<li class='has_sub'>
+                                    <a href='administrator.php' class='waves-effect'><i class='ti-user'></i> <span> Administrator </span></a>
+                                </li>";
+                        }
+                        ?>
 
                         <li class="has_sub">
                             <a href="pengirim.php" class="waves-effect"><i class="ti-user"></i> <span> Pengirim </span></a>
@@ -332,25 +336,23 @@ if ($role == "Super") {
                                 </div>
                                 <!-- AKHIR MODAL TABAH SUPER ADMIN -->
 
-                                <a href="#" class="btn btn-default btn-rounded waves-effect waves-light m-b-30" data-toggle="modal" data-target="#tambah-admin">Tambah Admin</a>
+                                <!-- <a href="#" class="btn btn-default btn-rounded waves-effect waves-light m-b-30" data-toggle="modal" data-target="#tambah-admin">Tambah Admin</a> -->
 
                                 <?php
-                                if ($role == "Super") {
-                                    echo "
-                                    <a href='#' class='btn btn-inverse btn-rounded waves-effect waves-light m-b-30' data-toggle='modal' data-target='#tambah-super-admin'>Tambah Super Admin</a>";
-                                }
+                                // if ($role == "Super") {
+                                //     echo "
+                                //     <a href='#' class='btn btn-inverse btn-rounded waves-effect waves-light m-b-30' data-toggle='modal' data-target='#tambah-super-admin'>Tambah Super Admin</a>";
+                                // }
                                 ?>
 
                                 <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>Nama</th>
-                                            <th>Bagian</th>
                                             <th>Username</th>
-                                            <th>Telpon</th>
+                                            <th>Cluster</th>
+                                            <th>TAP</th>
                                             <th>Role</th>
-                                            <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -360,18 +362,19 @@ if ($role == "Super") {
 
                                             <tr>
                                                 <td style="text-align: center;"><?= $no ?></td>
-                                                <td><?= $dta['nama'] ?></td>
+                                                <td><?= $dta['username'] ?></td>
+                                                <td><?= $dta['cluster'] ?></td>
 
                                                 <?php
-                                                $role = $dta['role'];
-                                                if ($role == "Super") {
-                                                    echo "<td> $dta[bagian]_$dta[cluster] </td>";
+
+                                                if ($dta['tap'] == NULL) {
+                                                    echo "<td> - </td>";
                                                 } else {
-                                                    echo "<td> $dta[bagian]_$dta[cluster]_$dta[tap] </td>";
+                                                    echo "<td> $dta[tap] </td>";
                                                 }
+
                                                 ?>
-                                                <td><?= $dta['username'] ?></td>
-                                                <td><?= $dta['telpon'] ?></td>
+
                                                 <?php
                                                 $role = $dta['role'];
                                                 if ($role == "Super") {
@@ -381,21 +384,21 @@ if ($role == "Super") {
                                                 }
 
                                                 ?>
-                                                <td style="text-align: center;">
+                                                <!-- <td style="text-align: center;"> -->
 
-                                                    <?php
-                                                    $role = $dta['role'];
-                                                    if ($role == "Super") {
-                                                        echo "
-                                                        <a href='#' type='button' data-toggle='modal' data-target='#edit-super-$dta[id]' class='btn table-action-btn waves-effect waves-light'><i class='md md-edit'></i></a>";
-                                                    } else {
-                                                        echo "
-                                                        <a href='#' type='button' data-toggle='modal' data-target='#edit-$dta[id]' class='btn table-action-btn waves-effect waves-light'><i class='md md-edit'></i></a>";
-                                                    }
+                                                <?php
+                                                // $role = $dta['role'];
+                                                // if ($role == "Super") {
+                                                //     echo "
+                                                //     <a href='#' type='button' data-toggle='modal' data-target='#edit-super-$dta[id]' class='btn table-action-btn waves-effect waves-light'><i class='md md-edit'></i></a>";
+                                                // } else {
+                                                //     echo "
+                                                //     <a href='#' type='button' data-toggle='modal' data-target='#edit-$dta[id]' class='btn table-action-btn waves-effect waves-light'><i class='md md-edit'></i></a>";
+                                                // }
 
-                                                    ?>
-                                                    <a href="#" type="button" data-toggle="modal" data-target="#hapus-<?= $dta['id'] ?>" class="btn table-action-btn waves-effect waves-light"><i class="md md-close"></i></a>
-                                                </td>
+                                                ?>
+                                                <!-- <a href="#" type="button" data-toggle="modal" data-target="#hapus-<?= $dta['id'] ?>" class="btn table-action-btn waves-effect waves-light"><i class="md md-close"></i></a> -->
+                                                <!-- </td> -->
                                             </tr>
 
 

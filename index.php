@@ -8,7 +8,7 @@ if (!isset($_SESSION['login_super'])) {
 }
 
 $get_id_session = $_SESSION['get_id'];
-$query_admin_akun = mysqli_query($conn, "SELECT * FROM tb_admin WHERE id = '$get_id_session'");
+$query_admin_akun = mysqli_query($conn, "SELECT * FROM tb_admin_2 WHERE id = '$get_id_session'");
 $get_data_akun_admin = mysqli_fetch_assoc($query_admin_akun);
 $role = $get_data_akun_admin['role'];
 $tap = $get_data_akun_admin['tap'];
@@ -103,7 +103,7 @@ if ($role == "Super") {
                             <li class="dropdown top-menu-item-xs">
                                 <a href="" class="dropdown-toggle profile waves-effect waves-light" data-toggle="dropdown" aria-expanded="true"><img src="assets/images/users/avatar-1.jpg" alt="user-img" class="img-circle"> </a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="#"><i class="ti-user m-r-10 text-custom"></i> <?= $get_data_akun_admin['nama'] ?></a></li>
+                                    <li><a href="#"><i class="ti-user m-r-10 text-custom"></i> <?= $get_data_akun_admin['username'] ?></a></li>
                                     <li class="divider"></li>
                                     <li><a href="" data-toggle="modal" data-target=".bs-example-modal-sm"><i class="ti-power-off m-r-10 text-danger"></i> Logout</a></li>
                                 </ul>
@@ -157,9 +157,14 @@ if ($role == "Super") {
 
                         </li>
 
-                        <li class="has_sub">
-                            <a href="administrator.php" class="waves-effect"><i class="ti-user"></i> <span> Administrator </span></a>
-                        </li>
+                        <?php
+                        if ($role == "Super") {
+                            echo "<li class='has_sub'>
+                                    <a href='administrator.php' class='waves-effect'><i class='ti-user'></i> <span> Administrator </span></a>
+                                </li>";
+                        }
+                        ?>
+
 
                         <li class="has_sub">
                             <a href="pengirim.php" class="waves-effect"><i class="ti-user"></i> <span> Pengirim </span></a>
@@ -186,7 +191,7 @@ if ($role == "Super") {
                     <div class="row">
                         <div class="col-sm-12">
 
-                            <h5 class="page-title">Selamat Datang <?= $get_data_akun_admin['nama'] ?> </h5>
+                            <h5 class="page-title">Selamat Datang <?= $get_data_akun_admin['username'] ?> </h5>
                             <ol class="breadcrumb">
                                 <li>
                                     <a href="#">Home</a>
