@@ -257,38 +257,37 @@ if ($role == "Super") {
                                                 if ($fullup == "Belum" && $pengirim_id == null && $terkirim == "Belum") {
                                                     if ($role == "Super") {
                                                         echo "<td class='text-center'> <a type='button' > <span class='label label-table label-danger'>Belum</span></a></td>";
+                                                        echo "<td class='text-center'> <span class='label label-table label-danger'>Belum</span></td>";
+                                                        echo "<td class='text-center'> <a> - </a> </td>
+                                                        <td class='text-center'> - </td>";
                                                     } else {
                                                         echo "<td class='text-center'> <a href='controller.php?fullup=true&id=$dta[id]&value=Sudah' type='button' > <span class='label label-table label-danger'>Belum</span></a></td>";
+                                                        echo "<td class='text-center'> <span class='label label-table label-danger'>Belum</span></td>";
+                                                        echo "<td class='text-center'> <a> Pilih </a> </td>
+                                                        <td class='text-center'> - </td>";
                                                     }
-                                                    echo "<td class='text-center'> <span class='label label-table label-danger'>Belum</span></td>";
-                                                    echo "<td class='text-center'> <a> Pilih </a> </td>
-                                                    <td class='text-center'> - </td>";
                                                 } else if ($fullup == "Sudah" && $pengirim_id == null && $terkirim == "Belum") {
 
                                                     if ($role == "Super") {
                                                         echo "<td class='text-center'> <a type='button' > <span class='label label-table label-success'>Sudah</span></a></td>";
-                                                    } else {
-                                                        echo "<td class='text-center'> <a href='controller.php?fullup=true&id=$dta[id]&value=Belum' type='button' > <span class='label label-table label-success'>Sudah</span></a></td>";
-                                                    }
-                                                    echo "<td class='text-center'> <a type='button'> <span class='label label-table label-danger'>Belum</span></a></td>";
-                                                    if ($role == "Super") {
-                                                        echo "<td class='text-center'> <a> Pilih </a> </td>
+                                                        echo "<td class='text-center'> <a type='button'> <span class='label label-table label-danger'>Belum</span></a></td>";
+                                                        echo "<td class='text-center'> <a> - </a> </td>
                                                         <td class='text-center'> - </td>";
                                                     } else {
+                                                        echo "<td class='text-center'> <a href='controller.php?fullup=true&id=$dta[id]&value=Belum' type='button' > <span class='label label-table label-success'>Sudah</span></a></td>";
+                                                        echo "<td class='text-center'> <a type='button'> <span class='label label-table label-danger'>Belum</span></a></td>";
                                                         echo "<td class='text-center'> <a data-toggle='modal' data-target='#terkirim-$dta[id]'> Pilih </a> </td>
                                                         <td class='text-center'> - </td>";
                                                     }
                                                 } else if ($fullup == "Sudah" && $pengirim_id != null && $terkirim == "Belum") {
-                                                    echo "<td class='text-center'> <a type='button' > <span class='label label-table label-success'>Sudah</span></a></td>";
                                                     if ($role == "Super") {
+                                                        echo "<td class='text-center'> <a type='button' > <span class='label label-table label-success'>Sudah</span></a></td>";
                                                         echo "<td class='text-center'> <a type='button'> <span class='label label-table label-danger'>Belum</span></a></td>";
-                                                    } else {
-                                                        echo "<td class='text-center'> <a href='controller.php?terkirim=true&id=$dta[id]&value=Sudah' type='button'> <span class='label label-table label-danger'>Belum</span></a></td>";
-                                                    }
-                                                    if ($role == "Super") {
                                                         echo "<td class='text-center'> <a> $dta[nama_pengirim] </a> </td>
                                                         <td class='text-center'> $dta[no_hp_pengirim] </td>";
                                                     } else {
+                                                        echo "<td class='text-center'> <a type='button' > <span class='label label-table label-success'>Sudah</span></a></td>";
+                                                        echo "<td class='text-center'> <a href='controller.php?terkirim=true&id=$dta[id]&value=Sudah' type='button'> <span class='label label-table label-danger'>Belum</span></a></td>";
                                                         echo "<td class='text-center'> <a data-toggle='modal' data-target='#terkirim2-$dta[id]'> $dta[nama_pengirim] </a> </td>
                                                         <td class='text-center'> $dta[no_hp_pengirim] </td>";
                                                     }
