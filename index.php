@@ -143,20 +143,15 @@ if ($role == "Super") {
 
 
         <!-- ========== Left Sidebar Start ========== -->
-
         <div class="left side-menu">
             <div class="sidebar-inner slimscrollleft">
                 <!--- Divider -->
                 <div id="sidebar-menu">
                     <ul>
-
                         <li class="text-muted menu-title">Menu</li>
-
                         <li class="has_sub">
                             <a href="index.php" class="waves-effect"><i class="ti-server"></i> <span> Data Pengajuan </span></a>
-
                         </li>
-
                         <?php
                         if ($role == "Super") {
                             echo "<li class='has_sub'>
@@ -164,13 +159,9 @@ if ($role == "Super") {
                                 </li>";
                         }
                         ?>
-
-
                         <li class="has_sub">
                             <a href="pengirim.php" class="waves-effect"><i class="ti-user"></i> <span> Pengirim </span></a>
                         </li>
-
-
                     </ul>
                     <div class="clearfix"></div>
                 </div>
@@ -178,7 +169,6 @@ if ($role == "Super") {
             </div>
         </div>
         <!-- Left Sidebar End -->
-
         <!-- ============================================================== -->
         <!-- Start right Content here -->
         <!-- ============================================================== -->
@@ -186,11 +176,9 @@ if ($role == "Super") {
             <!-- Start content -->
             <div class="content">
                 <div class="container">
-
                     <!-- Page-Title -->
                     <div class="row">
                         <div class="col-sm-12">
-
                             <h5 class="page-title">Selamat Datang <?= $get_data_akun_admin['username'] ?> </h5>
                             <ol class="breadcrumb">
                                 <li>
@@ -202,13 +190,9 @@ if ($role == "Super") {
                             </ol>
                         </div>
                     </div>
-
-
-
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="card-box table-responsive">
-
                                 <!-- <h4 class="m-t-0 header-title"><b>Responsive example</b></h4>
                                 <p class="text-muted font-13 m-b-30">
                                     Responsive is an extension for DataTables that resolves that problem by optimising the
@@ -216,7 +200,6 @@ if ($role == "Super") {
                                     table's layout for different screen sizes through the dynamic insertion and removal of
                                     columns from the table.
                                 </p> -->
-
                                 <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
                                     <thead>
                                         <tr>
@@ -245,15 +228,12 @@ if ($role == "Super") {
                                         <?php
                                         $no = 1;
                                         foreach ($data_pengajuan as $dta) { ?>
-
                                             <tr>
                                                 <td><?= $no ?></td>
                                                 <?php
-
                                                 $fullup = $dta['fullup'];
                                                 $terkirim = $dta['terkirim'];
                                                 $pengirim_id = $dta['pengirim_id'];
-
                                                 if ($fullup == "Belum" && $pengirim_id == null && $terkirim == "Belum") {
                                                     if ($role == "Super") {
                                                         echo "<td class='text-center'> <a type='button' > <span class='label label-table label-danger'>Belum</span></a></td>";
@@ -267,7 +247,6 @@ if ($role == "Super") {
                                                         <td class='text-center'> - </td>";
                                                     }
                                                 } else if ($fullup == "Sudah" && $pengirim_id == null && $terkirim == "Belum") {
-
                                                     if ($role == "Super") {
                                                         echo "<td class='text-center'> <a type='button' > <span class='label label-table label-success'>Sudah</span></a></td>";
                                                         echo "<td class='text-center'> <a type='button'> <span class='label label-table label-danger'>Belum</span></a></td>";
@@ -301,7 +280,6 @@ if ($role == "Super") {
                                                     echo "<td class='text-center'> <a > $dta[nama_pengirim] </a> </td>
                                                     <td class='text-center'> $dta[no_hp_pengirim] </td>";
                                                 }
-
                                                 ?>
                                                 <td><?= $dta['nama_lengkap'] ?></td>
                                                 <td><?= $dta['nomor_telpon1'] ?></td>
@@ -340,11 +318,9 @@ if ($role == "Super") {
                                                                         <input type="text" disabled value="<?= $dta['kelurahan'] ?>" class="nb-edt form-control" required="" autocomplete="off" placeholder="Nama Lengkap" name="nama" id="nama">
                                                                     </div>
                                                                 </div>
-
                                                                 <div class="form-group row">
                                                                     <label class="col-sm-3 col-form-label">Pengirim</label>
                                                                     <div class="col-sm-9">
-
                                                                         <select class="form-control select2" name="pengirim" id="pengirim" required="">
                                                                             <option>- Pilih -</option>
                                                                             <?php
@@ -354,10 +330,8 @@ if ($role == "Super") {
                                                                             }
                                                                             ?>
                                                                         </select>
-
                                                                     </div>
                                                                 </div>
-
                                                                 <div class="modal-footer">
                                                                     <input type="hidden" name="terkirim" value="<?= $dta['terkirim'] ?>">
                                                                     <input type="hidden" name="id" value="<?= $dta['id'] ?>">
@@ -387,11 +361,9 @@ if ($role == "Super") {
                                                                         <input type="text" disabled value="<?= $dta['kelurahan'] ?>" class="nb-edt form-control" required="" autocomplete="off" placeholder="Nama Lengkap" name="nama" id="nama">
                                                                     </div>
                                                                 </div>
-
                                                                 <div class="form-group row">
                                                                     <label class="col-sm-3 col-form-label">Pengirim</label>
                                                                     <div class="col-sm-9">
-
                                                                         <select class="form-control select2" name="pengirim" id="pengirim" required="">
                                                                             <option value="-"> KOSONGKAN </option>
                                                                             <?php
@@ -406,10 +378,8 @@ if ($role == "Super") {
                                                                             }
                                                                             ?>
                                                                         </select>
-
                                                                     </div>
                                                                 </div>
-
                                                                 <div class="modal-footer">
                                                                     <input type="hidden" name="terkirim" value="<?= $dta['terkirim'] ?>">
                                                                     <input type="hidden" name="id" value="<?= $dta['id'] ?>">
