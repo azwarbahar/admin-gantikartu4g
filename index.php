@@ -268,12 +268,12 @@ if ($role == "Super") {
                                                         echo "<td class='text-center'> <a type='button' > <span class='label label-table label-success'>Sudah</span></a></td>";
                                                         echo "<td class='text-center'> <a type='button'> <span class='label label-table label-danger'>Belum</span></a></td>";
                                                         echo "<td class='text-center'> <a> $dta[nama_pengirim] </a> </td>
-                                                        <td class='text-center'> $dta[no_hp_pengirim] </td>";
+                                                        <td class='text-center'> <a href='tel:$dta[no_hp_pengirim]'> $dta[no_hp_pengirim] </a></td>";
                                                     } else {
                                                         echo "<td class='text-center'> <a type='button' > <span class='label label-table label-success'>Sudah</span></a></td>";
                                                         echo "<td class='text-center'> <a href='controller.php?terkirim=true&id=$dta[id]&value=Sudah' type='button'> <span class='label label-table label-danger'>Belum</span></a></td>";
                                                         echo "<td class='text-center'> <a data-toggle='modal' data-target='#terkirim2-$dta[id]'> $dta[nama_pengirim] </a> </td>
-                                                        <td class='text-center'> $dta[no_hp_pengirim] </td>";
+                                                        <td class='text-center'> <a href='tel:$dta[no_hp_pengirim]'> $dta[no_hp_pengirim] </a></td>";
                                                     }
                                                 } else if ($fullup == "Sudah" && $pengirim_id != null && $terkirim == "Sudah") {
                                                     echo "<td class='text-center'> <a type='button' > <span class='label label-table label-success'>Sudah</span></a></td>";
@@ -283,12 +283,12 @@ if ($role == "Super") {
                                                         echo "<td class='text-center'> <a href='controller.php?terkirim=true&id=$dta[id]&value=Belum' type='button'> <span class='label label-table label-success'>Sudah</span></a></td>";
                                                     }
                                                     echo "<td class='text-center'> <a > $dta[nama_pengirim] </a> </td>
-                                                    <td class='text-center'> $dta[no_hp_pengirim] </td>";
+                                                    <td class='text-center'> <a href='tel:$dta[no_hp_pengirim]'> $dta[no_hp_pengirim] </a></td>";
                                                 }
                                                 ?>
                                                 <td><?= $dta['nama_lengkap'] ?></td>
-                                                <td><?= $dta['nomor_telpon1'] ?></td>
-                                                <td><?= $dta['nomor_telpon2'] ?></td>
+                                                <td> <a href="tel:<?= $dta['nomor_telpon1'] ?>"><?= $dta['nomor_telpon1'] ?></a> </td>
+                                                <td> <a href="tel:<?= $dta['nomor_telpon2'] ?>"><?= $dta['nomor_telpon2'] ?></a> </td>
                                                 <td><?= $dta['jam'] ?></td>
                                                 <td><?= $dta['tanggal'] ?></td>
                                                 <td><?= $dta['alamat'] ?></td>
@@ -302,7 +302,7 @@ if ($role == "Super") {
                                                 ?>
                                                 <td><?= $dta_teritori['tap'] ?></td>
                                                 <td><?= $dta_teritori['nama_pic'] ?></td>
-                                                <td><?= $dta_teritori['no_hp_pic'] ?></td>
+                                                <td><a href="tel:<?= $dta_teritori['no_hp_pic'] ?>"><?= $dta_teritori['no_hp_pic'] ?></a> </td>
                                                 <td><?= $dta['created_at'] ?></td>
 
                                                 <?php
@@ -448,7 +448,7 @@ if ($role == "Super") {
             </div> <!-- content -->
 
             <footer class="footer">
-                © Admin Ganti Kartu 4G | Telkomsel.
+                &copy; 2022 <a href="https://kinarya-solusi.com/">PT. Kinarya Selaras Solusi</a> | Gowa
             </footer>
 
         </div>

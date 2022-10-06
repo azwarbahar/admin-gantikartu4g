@@ -574,7 +574,7 @@ if ($role == "Super") {
             </div> <!-- content -->
 
             <footer class="footer">
-                © Admin Ganti Kartu 4G | Telkomsel.
+                &copy; 2022 <a href="https://kinarya-solusi.com/">PT. Kinarya Selaras Solusi</a> | Gowa
             </footer>
 
         </div>
