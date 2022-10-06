@@ -357,7 +357,34 @@ if (isset($_POST['edit_pengirim_pengajuan2'])) {
                 });
             });
         </script>
+    <?php }
+}
+
+
+
+
+// HAPUS PENGAJUAN
+if (isset($_GET['hapus_pengajuan'])) {
+    $id = $_GET['id'];
+
+    $query = "DELETE FROM tb_pengajuans WHERE id = '$id'";
+    mysqli_query($conn, $query);
+    if (mysqli_affected_rows($conn) > 0) {
+        plugins(); ?>
+        <script>
+            $(document).ready(function() {
+                swal({
+                    title: 'Berhasil Dihapus',
+                    text: 'Data Pengajuan berhasil dihapus',
+                    icon: 'success'
+                }).then((data) => {
+                    location.href = 'index.php';
+                });
+            });
+        </script>
 <?php }
 }
+
+
 
 ?>

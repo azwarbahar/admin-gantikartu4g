@@ -222,6 +222,11 @@ if ($role == "Super") {
                                             <th>Nama PIC</th>
                                             <th>No Hp PIC</th>
                                             <th>Dibuat</th>
+                                            <?php
+                                            if ($role == "Admin") {
+                                                echo "<th>Aksi</th>";
+                                            }
+                                            ?>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -299,6 +304,13 @@ if ($role == "Super") {
                                                 <td><?= $dta_teritori['nama_pic'] ?></td>
                                                 <td><?= $dta_teritori['no_hp_pic'] ?></td>
                                                 <td><?= $dta['created_at'] ?></td>
+
+                                                <?php
+                                                if ($role == "Admin") {
+                                                    echo "<td class='text-center'> <a type='button' data-toggle='modal' data-target='#hapus-$dta[id]'> <span class='label label-table label-danger'> <i class='fa fa-trash'></i> Hapus</span></a></td>";
+                                                }
+                                                ?>
+
                                             </tr>
 
 
@@ -392,6 +404,31 @@ if ($role == "Super") {
                                                 </div>
                                             </div>
                                             <!-- AKHIR MODAL EDIT PENGIRIM -->
+
+
+                                            <!-- MODAL HAPUS -->
+                                            <div class="modal fade" tabindex="-1" id="hapus-<?= $dta['id'] ?>">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content bg-inverse">
+                                                        <div class="modal-header">
+                                                            <h4 class="modal-title" style="color: white;">Hapus Data Pengajuan</h4>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <p style="color: white;">Anda Yakin Ingin Menghapus Data Pengajuan ?</p>
+                                                        </div>
+                                                        <div class="modal-footer justify-content-between">
+                                                            <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Batal</button>
+                                                            <a href="controller.php?hapus_pengajuan=true&id=<?= $dta['id'] ?>" type="button" class="btn btn-outline-dark" style="background-color: white;">Hapus</a>
+                                                        </div>
+                                                    </div>
+                                                    <!-- /.modal-content -->
+                                                </div>
+                                                <!-- /.modal-dialog -->
+                                            </div>
+                                            <!-- /.modal -->
 
 
                                         <?php
