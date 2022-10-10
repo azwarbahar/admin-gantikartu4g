@@ -357,10 +357,8 @@ if (isset($_POST['edit_pengirim_pengajuan2'])) {
                 });
             });
         </script>
-    <?php }
+<?php }
 }
-
-
 
 
 // HAPUS PENGAJUAN

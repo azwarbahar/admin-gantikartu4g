@@ -121,7 +121,7 @@ if ($role == "Super") {
             <div class="modal-dialog modal-sm">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">Ã</button>
                         <h4 class="modal-title" id="mySmallModalLabel">Logout Akun</h4>
                     </div>
                     <div class="modal-body">
@@ -213,7 +213,7 @@ if ($role == "Super") {
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">Ã</button>
                                                 <h4 class="modal-title">Tambah Akun Admin</h4>
                                             </div>
                                             <div class="modal-body">
@@ -278,7 +278,7 @@ if ($role == "Super") {
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">Ã</button>
                                                 <h4 class="modal-title">Tambah Akun Super Admin</h4>
                                             </div>
                                             <div class="modal-body">
@@ -407,7 +407,7 @@ if ($role == "Super") {
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">Ã</button>
                                                             <h4 class="modal-title">Edit Admin</h4>
                                                         </div>
                                                         <div class="modal-body">
