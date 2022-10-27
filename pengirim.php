@@ -241,6 +241,12 @@ $data_pengirim = mysqli_query($conn, "SELECT * FROM tb_pengirim ");
                                                             </select>
                                                         </div>
                                                     </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-sm-3 col-form-label">Business</label>
+                                                        <div class="col-sm-9">
+                                                            <input type="text" class="nb-edt form-control" required="" autocomplete="off" placeholder="Business" name="business" id="business">
+                                                        </div>
+                                                    </div>
 
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">Batal</button>
@@ -355,6 +361,12 @@ $data_pengirim = mysqli_query($conn, "SELECT * FROM tb_pengirim ");
 
                                                                             ?>
                                                                         </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group row">
+                                                                    <label class="col-sm-3 col-form-label">Business</label>
+                                                                    <div class="col-sm-9">
+                                                                        <input type="text" value="<?= $dta['business'] ?>" class="nb-edt form-control" required="" autocomplete="off" placeholder="Business" name="business" id="business">
                                                                     </div>
                                                                 </div>
 

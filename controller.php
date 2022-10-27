@@ -153,10 +153,11 @@ if (isset($_POST['submit_tambah_pengirim'])) {
     $no_hp = $_POST['no_hp'];
     $divisi = $_POST['divisi'];
     $tap = $_POST['tap'];
+    $business = $_POST['business'];
 
 
     // TAMBAH DATA
-    $query = "INSERT INTO tb_pengirim VALUES (NULL, '$nama', '$no_hp', '$divisi', '$tap')";
+    $query = "INSERT INTO tb_pengirim VALUES (NULL, '$nama', '$no_hp', '$divisi', '$tap', '$business')";
     mysqli_query($conn, $query);
     if (mysqli_affected_rows($conn) > 0) {
         plugins(); ?>
@@ -182,10 +183,12 @@ if (isset($_POST['submit_edit_pengirim'])) {
     $no_hp = $_POST['no_hp'];
     $divisi = $_POST['divisi'];
     $tap = $_POST['tap'];
+    $business = $_POST['business'];
     $query = "UPDATE tb_pengirim SET nama = '$nama',
                                 no_hp = '$no_hp',
                                 divisi = '$divisi',
-                                tap = '$tap' WHERE id = '$id'";
+                                tap = '$tap',
+                                business = '$business' WHERE id = '$id'";
 
     mysqli_query($conn, $query);
     if (mysqli_affected_rows($conn) > 0) {
@@ -357,7 +360,7 @@ if (isset($_POST['edit_pengirim_pengajuan2'])) {
                 });
             });
         </script>
-<?php }
+    <?php }
 }
 
 
